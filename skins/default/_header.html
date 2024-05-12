@@ -1,0 +1,20 @@
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<load target="css/default.css" />
+<load target="css/pagination.css" />
+<load target="js/default.js" />
+<load target="https://use.fontawesome.com/911a477176.js" />
+<load target="js/shop.js" />
+<div id="ics-hd">
+	<div class="ics-nav" >
+		<a href="{getUrl('act',$val['act'],'page',1,'search_keyword','')}" class="ics-nav-item" class="ics-nav-item active"|cond="$menu == $key" loop="$iconshop_main_menu => $key,$val">{$val['title']}</a>
+
+		<!-- 상품 검색 -->
+		<a href="{getUrl('','module','admin','act','dispIconshopAdminConfig')}" onclick="window.open(this.href);return false;" cond="$grant->manager" class="ics-nav-item">상점설정</a>
+		<form action="./" method="get" class="ics-search">
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="act" value="{$act}" />
+			<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}"  />
+			<button type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+		</form>
+	</div>
+</div>

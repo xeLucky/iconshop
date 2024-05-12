@@ -1,0 +1,36 @@
+<query id="getLogList" action="select">
+    <tables>
+        <table name="iconshop_log" alias="log" />
+        <table name="iconshop_items" alias="item" />
+    </tables>
+    <columns>
+        <column name="*" />
+        <column name="item.title" />
+        <column name="item.file1" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="item.icon_srl" default="log.icon_srl" notnull="notnull" />
+        <group pipe="and">
+            <condition operation="equal" column="log.category_srl" var="s_category_srl" />
+            <condition operation="equal" column="substr(log.regdate,1,8)" var="s_regdate" pipe="and" />
+            <condition operation="more" column="substr(log.regdate,1,8)" var="s_regdate_more" pipe="and" />
+            <condition operation="less" column="substr(log.regdate,1,8)" var="s_regdate_less" pipe="and" />
+            <group pipe="and">
+                <condition operation="like" column="log.content" var="s_content" />
+                <condition operation="like" column="log.ipaddress" var="s_ipaddress" pipe="or" />
+                <condition operation="equal" column="log.data_srl" var="s_data_srl" pipe="or" />
+                <condition operation="equal" column="log.icon_srl" var="s_icon_srl" pipe="or" />
+                <condition operation="equal" column="log.point" var="s_point" pipe="or" />
+                <condition operation="equal" column="log.sender_srl" var="s_sender_srl" filter="number" pipe="or" />
+                <condition operation="equal" column="log.receive_srl" var="s_receive_srl" filter="number" pipe="or" />
+                <condition operation="less" column="log.point" var="s_point" filter="number" pipe="or" />
+            </group>
+        </group>
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="log.regdate" order="sort_order" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

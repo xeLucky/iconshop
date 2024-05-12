@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">아이콘샵 기본스킨</title>
+    <description xml:lang="ko">
+        아이콘샵의 소시랑스킨 입니다.
+    </description>
+    <version>0.1</version>
+    <date>2024-04-25</date>
+
+    <author email_address="admin@barch.kr" link="https://xetown.net">
+        <name xml:lang="ko">러키군</name>
+    </author>
+    <license>GPL v2</license>
+</skin>
+
